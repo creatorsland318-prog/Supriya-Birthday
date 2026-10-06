@@ -1,0 +1,162 @@
+.final-section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem var(--section-px);
+  overflow: hidden;
+}
+
+.final-section__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 60%, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Top separator */
+.final-section::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: var(--section-px);
+  right: var(--section-px);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.final-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2.5rem;
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.final-big-msg {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Timeline trace */
+.final-trace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.final-trace__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.final-trace__text {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.final-trace__text--today {
+  color: var(--accent);
+}
+
+.final-trace__arrow {
+  font-size: 1rem;
+  color: var(--border);
+  line-height: 1;
+}
+
+.final-birthday {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.final-birthday em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.final-line {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.final-line--last {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Rose */
+.final-rose {
+  display: flex;
+  justify-content: center;
+  margin: -0.5rem 0;
+}
+
+.final-rose__img {
+  width: clamp(140px, 20vw, 200px);
+  height: auto;
+  /* Black bg disappears with 'screen' blend on the dark page */
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 4px 18px rgba(160, 20, 20, 0.5)) saturate(1.15);
+  transition: transform 0.6s ease;
+}
+
+.final-rose:hover .final-rose__img {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Heart */
+.final-heart {
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--blush);
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(212,160,160,0.4));
+}
+
+/* Replay button */
+.replay-btn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+  margin-top: 0.5rem;
+}
+
+.replay-btn:hover {
+  border-color: rgba(201,169,110,0.3);
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .final-section {
+    padding: 4rem var(--section-px);
+  }
+}

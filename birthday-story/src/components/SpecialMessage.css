@@ -1,0 +1,67 @@
+.special-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-px);
+  overflow-y: auto;
+}
+
+.special-overlay__bg {
+  position: absolute;
+  inset: 0;
+  background: #06060a;
+  /* Subtle radial glow */
+  background-image: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+}
+
+.special-message-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+  max-width: 640px;
+  padding: 2rem 0 3rem;
+}
+
+.special-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.special-line--ending {
+  font-style: italic;
+  color: var(--accent);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  margin-top: 0.5rem;
+}
+
+.special-continue-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.9rem 2.2rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.special-continue-btn:hover {
+  border-color: rgba(201,169,110,0.5);
+  color: var(--accent);
+}

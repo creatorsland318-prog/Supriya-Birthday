@@ -1,0 +1,42 @@
+.app {
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--bg);
+  position: relative;
+}
+
+.story-main {
+  width: 100%;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.site-footer {
+  width: 100%;
+  text-align: center;
+  padding: 2rem var(--section-px, 2rem) 3rem;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border, rgba(255,255,255,0.08)), transparent);
+}
+
+.site-footer p {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted, rgba(255,255,255,0.3));
+  transition: color 0.3s;
+}
+
+.site-footer p:hover {
+  color: var(--accent, rgba(201,169,110,0.8));
+}
