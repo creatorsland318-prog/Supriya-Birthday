@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { storyConfig } from './config/story';
 import { useAudio } from './hooks/useAudio';
 
+import LoginScreen from './components/LoginScreen';
 import EntryScreen from './components/EntryScreen';
 import MusicControl from './components/MusicControl';
 import StoryIntro from './components/StoryIntro';
@@ -17,6 +18,7 @@ import './styles/global.css';
 import './App.css';
 
 type Stage =
+  | 'login'
   | 'entry'
   | 'intro'
   | 'cake'
@@ -24,10 +26,35 @@ type Stage =
   | 'story';
 
 export default function App() {
-  const [stage, setStage] = useState<Stage>('entry');
+  const [stage, setStage] = useState<Stage>(() => {
+    try {
+      const isAuthed =
+        sessionStorage.getItem('birthday_story_auth') === 'true' ||
+        localStorage.getItem('birthday_story_auth') === 'true';
+      return isAuthed ? 'entry' : 'login';
+    } catch {
+      return 'login';
+    }
+  });
   const [specialOpen, setSpecialOpen] = useState(false);
 
   const audio = useAudio(storyConfig.music?.src);
+
+  // ── Login ─────────────────────────────────────────────
+  const handleLoginSuccess = useCallback(() => {
+    setStage('entry');
+  }, []);
+
+  const handleLock = useCallback(() => {
+    try {
+      sessionStorage.removeItem('birthday_story_auth');
+      localStorage.removeItem('birthday_story_auth');
+    } catch {
+      // ignore
+    }
+    audio.pause();
+    setStage('login');
+  }, [audio]);
 
   // ── Entry ─────────────────────────────────────────────
   const handleEnter = useCallback(() => {
@@ -72,8 +99,30 @@ export default function App() {
       {/* Subtle film grain */}
       <div className="grain-overlay" aria-hidden="true" />
 
+      {/* Lock button when unlocked */}
+      {stage !== 'login' && (
+        <button
+          className="story-lock-btn"
+          onClick={handleLock}
+          aria-label="Lock story"
+          title="Lock story and return to login"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            className="lock-icon-svg"
+          >
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          <span>Lock</span>
+        </button>
+      )}
+
       {/* Persistent music control */}
-      {stage !== 'entry' && (
+      {stage !== 'entry' && stage !== 'login' && (
         <MusicControl
           isPlaying={audio.isPlaying}
           isMuted={audio.isMuted}
@@ -83,6 +132,16 @@ export default function App() {
           title={storyConfig.music?.title}
         />
       )}
+
+      {/* ── Login screen ── */}
+      <AnimatePresence>
+        {stage === 'login' && (
+          <LoginScreen
+            key="login"
+            onLoginSuccess={handleLoginSuccess}
+          />
+        )}
+      </AnimatePresence>
 
       {/* ── Entry screen ── */}
       <AnimatePresence>
@@ -96,7 +155,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* ── Main story (after entry) ── */}
-      {stage !== 'entry' && (
+      {stage !== 'entry' && stage !== 'login' && (
         <motion.main
           className="story-main"
           initial={{ opacity: 0 }}
@@ -148,6 +207,13 @@ export default function App() {
               {/* Footer */}
               <footer className="site-footer" aria-label="Footer">
                 <p>Made with ❤️, by Subhash</p>
+                <button
+                  type="button"
+                  className="footer-lock-link"
+                  onClick={handleLock}
+                >
+                  🔒 Lock Story
+                </button>
               </footer>
             </>
           )}
@@ -164,3 +230,4 @@ export default function App() {
     </div>
   );
 }
+

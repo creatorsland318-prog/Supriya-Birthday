@@ -146,7 +146,7 @@ export const storyConfig: StoryConfig = {
       year: "2026",
       title: "Right Now",
       // ─── REPLACE: Path to 2026 cover photo ───────────────
-      coverImage: "/assets/photos/2026/cover.jpg",
+      coverImage: "/assets/photos/2026/cover-copy.jpeg",
       // ─── REPLACE: Path to 2026 video ──────────────────────
       video: "/assets/videos/2026.mp4",
       // ─── REPLACE: Short message for 2026 ──────────────────

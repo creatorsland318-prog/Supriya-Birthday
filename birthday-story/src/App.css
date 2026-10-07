@@ -40,3 +40,59 @@
 .site-footer p:hover {
   color: var(--accent, rgba(201,169,110,0.8));
 }
+
+/* ── Lock story button ── */
+.story-lock-btn {
+  position: fixed;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(17, 17, 23, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.45rem 0.85rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.story-lock-btn:hover {
+  color: var(--accent);
+  border-color: rgba(201, 169, 110, 0.4);
+  background: rgba(24, 24, 31, 0.9);
+}
+
+.lock-icon-svg {
+  width: 13px;
+  height: 13px;
+}
+
+.footer-lock-link {
+  background: none;
+  border: none;
+  color: var(--text-muted, rgba(255,255,255,0.3));
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.footer-lock-link:hover {
+  color: var(--accent, rgba(201,169,110,0.8));
+}
+
