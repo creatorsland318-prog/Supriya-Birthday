@@ -1,0 +1,6 @@
+/* Global styles are imported in styles/global.css via App.tsx */
+/* This file intentionally left minimal */
+
+body {
+  margin: 0;
+}

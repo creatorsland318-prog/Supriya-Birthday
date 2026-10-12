@@ -1,0 +1,110 @@
+.memory-view {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem var(--section-px) 4rem;
+}
+
+.memory-view__bg {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) brightness(0.25) saturate(0.6);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.memory-view__bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6,6,10,0.85);
+  z-index: -1;
+}
+
+.memory-back-btn {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(17,17,23,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.55rem 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  z-index: 10;
+}
+
+.memory-back-btn:hover {
+  color: var(--accent);
+  border-color: rgba(201,169,110,0.4);
+}
+
+.memory-view__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 940px;
+}
+
+.memory-year {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.memory-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.memory-date {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.memory-video-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.memory-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .memory-view {
+    padding-top: 4.5rem;
+  }
+}

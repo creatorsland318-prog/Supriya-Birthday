@@ -1,0 +1,82 @@
+.cake-section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-px);
+  overflow: hidden;
+}
+
+.cake-section__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 50% 45%, rgba(201,169,110,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cake-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.cake-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.cake-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.cake-wrapper {
+  margin: 1.5rem 0;
+  filter: drop-shadow(0 0 24px rgba(249,200,74,0.2));
+}
+
+.cake-svg {
+  width: clamp(180px, 45vw, 260px);
+  height: auto;
+}
+
+.wish-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 2px;
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+}
+
+.wish-btn:hover {
+  background: #d4b87e;
+}
+
+.wish-made {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}

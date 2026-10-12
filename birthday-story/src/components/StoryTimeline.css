@@ -1,0 +1,208 @@
+.timeline-section {
+  padding: 6rem var(--section-px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+}
+
+/* Soft top separator */
+.timeline-section::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: var(--section-px);
+  right: var(--section-px);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+/* Header */
+.timeline-header {
+  text-align: center;
+  max-width: 600px;
+}
+
+.timeline-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.timeline-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.timeline-heading em {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Milestones */
+.timeline-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+}
+
+.timeline-milestones::before {
+  content: '';
+  position: absolute;
+  left: 1.15rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+}
+
+.milestone {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.milestone__dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 0.35rem;
+  box-shadow: 0 0 10px rgba(201,169,110,0.4);
+}
+
+.milestone__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.milestone__date {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.milestone__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.milestone__desc {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Carousel */
+.timeline-carousel-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.carousel-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.carousel-hint {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  opacity: 0.5;
+  margin-top: -0.75rem;
+}
+
+.memory-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* scroll-snap disabled — conflicts with the seamless infinite-loop jump */
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 1rem 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,169,110,0.2) transparent;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.memory-carousel:active,
+.memory-carousel[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+/* Scroll-hint fade on the right edge */
+.timeline-carousel-wrap {
+  position: relative;
+}
+.timeline-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(to left, var(--surface, #0d0d0f) 10%, transparent);
+  pointer-events: none;
+  border-radius: 0 12px 12px 0;
+  opacity: 0.8;
+}
+
+.memory-carousel::-webkit-scrollbar {
+  height: 3px;
+}
+
+.memory-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.memory-carousel::-webkit-scrollbar-thumb {
+  background: rgba(201,169,110,0.2);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 4rem var(--section-px) 3rem;
+    gap: 2.5rem;
+  }
+
+  .timeline-milestones {
+    max-width: 100%;
+  }
+
+  .memory-carousel {
+    padding-left: var(--section-px);
+    padding-right: var(--section-px);
+  }
+}
